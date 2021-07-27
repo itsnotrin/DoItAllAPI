@@ -2,8 +2,6 @@ const express = require('express')
 const { port } = require('./config/config.json')
 const app = express()
 
-//App Settings
-app.set('trust proxy', true)
 
 //Import the routers
 const FunRouter = require('./routes/api/v1/funrouter')
@@ -28,9 +26,11 @@ catch(err){
     console.log(`ERROR: ${err.message}`)
 }
 
-function start(){
-    app.listen(port, () => {
-        console.log(`Listening on http://localhost:${port}/api`)
+function start(poort){
+    app.listen(poort, () => {
+        console.log(`Listening on http://localhost:${poort}/api`)
+        console.log("TEST SUCCESSFUL!")
     })
+    
 }
 module.exports = { start }
