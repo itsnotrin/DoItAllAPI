@@ -1,8 +1,9 @@
 const express = require('express')
 const { port } = require('./config/config.json')
+const PORT = process.env.PORT || port;
 const app = express()
 
-
+app.set('trust proxy', 'loopback, 0.0.0.0')
 //Import the routers
 const FunRouter = require('./routes/api/v1/funrouter')
 const DevRouter = require('./routes/api/v1/devrouter')
@@ -18,8 +19,8 @@ app.use('/api/v1/dev', DevRouter)
 // })
 
 try{
-    app.listen(port, () => {
-        console.log(`Listening on http://localhost:${process.env.PORT}/api`)
+    app.listen(PORT, () => {
+        console.log(`Listening on http://localhost:${PORT}/api`)
     })
 }
 catch(err){
