@@ -19,7 +19,7 @@ app.use('/api/v1/dev', DevRouter)
 
 try{
     app.listen(port, () => {
-        console.log(`Listening on http://localhost:${process.env.$PORT}/api`)
+        console.log(`Listening on http://localhost:${process.env.PORT}/api`)
     })
 }
 catch(err){
