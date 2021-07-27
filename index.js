@@ -27,3 +27,10 @@ try{
 catch(err){
     console.log(`ERROR: ${err.message}`)
 }
+
+function start(){
+    app.listen(port, () => {
+        console.log(`Listening on http://localhost:${port}/api`)
+    })
+}
+module.exports = { start }
