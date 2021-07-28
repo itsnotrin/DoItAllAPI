@@ -21,7 +21,7 @@ function getRandomLine(filename, res){
       // FOR DEBUGGING: return console.log(line);
       
    })
-  }
+}
 
 
 //Add all the requests
