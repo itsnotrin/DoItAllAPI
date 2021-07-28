@@ -23,9 +23,11 @@ function getRandomLine(filename, callback){
     var line = lines[Math.floor(Math.random()*lines.length)]
 
     // invoke the callback with our line
-    return line;
+    return res.send(line);
+    // return console.log(line);
+    
  })
 }
-console.log(getRandomLine('messages/jokes.txt'))
+getRandomLine('messages/jokes.txt')
 })
 module.exports = router;
