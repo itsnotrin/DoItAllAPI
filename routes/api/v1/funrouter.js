@@ -58,6 +58,7 @@ router.get('/iss-location', (req, res) => {
         // DEBUGGING: console.log(info["iss_position"])
         return res.send(info["iss_position"]) 
     })
+    //Catch the error if there is one
     .catch(function (error) {
         console.log(error)
         return res.send(`ERROR: ${error}`)
