@@ -65,5 +65,23 @@ router.get('/iss-location', (req, res) => {
     })
 })
 
+router.get('/advice', (req, res) => {
+    //Make a request to the API being used for advice
+    let url = 'https://api.adviceslip.com/advice'
+    //Make the actual get request using axios to the api
+    axios.get(url)
+    .then(function (response) {
+        let info = response["data"]
+        let slip = info["slip"]
+        return res.send(slip["advice"])
+    })
+    .catch(function (error) {
+        console.log(error)
+        return res.send(`ERROR: ${error}`)
+    })
+    
+})
+
+
 
 module.exports = router;
