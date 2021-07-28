@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const fs = require("fs");
+const axios = require('axios');
 const router = Router();
 
 
@@ -46,4 +47,22 @@ router.get('/insults', (req, res) => {
 router.get('/8ball', (req, res) => {
     getRandomLine('messages/8ball.txt', res);
 })
+
+router.get('/iss-location', (req, res) => {
+    //Make a request to the ISS api
+    let url = 'http://api.open-notify.org/iss-now.json'
+    //Make a get request using axios to the api
+    axios.get(url)
+    .then(function (response) {
+        let info = response["data"]
+        // DEBUGGING: console.log(info["iss_position"])
+        return res.send(info["iss_position"]) 
+    })
+    .catch(function (error) {
+        console.log(error)
+        return res.send(`ERROR: ${error}`)
+    })
+})
+
+
 module.exports = router;
