@@ -5,10 +5,12 @@ const app = express()
 //Import the routers
 const FunRouter = require('./routes/api/v1/funrouter')
 const DevRouter = require('./routes/api/v1/devrouter')
+const InfoRouter = require('./routes/api/v1/inforouter')
 
 //Use the routers
 app.use('/api/v1/fun', FunRouter)
 app.use('/api/v1/dev', DevRouter)
+app.use('/api/v1/info', InfoRouter)
 
 
 //Launch the web server
