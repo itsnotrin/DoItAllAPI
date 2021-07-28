@@ -32,6 +32,18 @@ router.get('/', (req, res) => {
 })
 
 router.get('/randomjoke', (req, res) => {
-    getRandomLine('messages/jokes.txt', res)
+    getRandomLine('messages/jokes.txt', res);
+})
+
+router.get('/randompickupline', (req, res) => {
+    getRandomLine('messages/pickuplines.txt', res);
+})
+
+router.get('/insults', (req, res) => {
+    getRandomLine('messages/insults.txt', res);
+})
+
+router.get('/8ball', (req, res) => {
+    getRandomLine('messages/8ball.txt', res);
 })
 module.exports = router;
