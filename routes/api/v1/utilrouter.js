@@ -39,10 +39,9 @@ router.get('/emailcheck' , (req, res) => {
 router.get('/shortenurl', (req, res) => {
   //Shorten the url
   let url = req.query.url
-  console.log(url)
   async function urlshortner(url) {
     const response = await bitly.shorten(url);
-    console.log(`Your shortened bitlink is ${response.link}`);
+    // console.log(`Your shortened bitlink is ${response.link}`);
     // res.send(response.link)
     res.json({
       "message": "Success",

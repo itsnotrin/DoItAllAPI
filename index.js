@@ -29,7 +29,6 @@ catch(err){
 function start(poort){
     app.listen(poort, () => {
         console.log(`Listening on http://localhost:${poort}/api`)
-        console.log("TEST SUCCESSFUL!")
     })
     
 }
