@@ -18,7 +18,12 @@ function getRandomLine(filename, res){
       var line = lines[Math.floor(Math.random()*lines.length)]
   
       // Respond to the res request with the line!
-      return res.send(line);
+      return res.json({
+        "message": "Success",
+        "info": {
+          "chosen": line
+        }
+      }) 
       // FOR DEBUGGING: return console.log(line);
       
    })
@@ -55,13 +60,25 @@ router.get('/iss-location', (req, res) => {
     axios.get(url)
     .then(function (response) {
         let info = response["data"]
-        // DEBUGGING: console.log(info["iss_position"])
-        return res.send(info["iss_position"]) 
+        let data = info["data"]
+        let yes = info["iss_position"]
+        return res.json({
+            "message": "Success",
+            "iss_position": {
+              "longitude": yes["longitude"],
+              "latitude": yes["latitude"]
+            }
+          }) 
     })
     //Catch the error if there is one
     .catch(function (error) {
         console.log(error)
-        return res.send(`ERROR: ${error}`)
+        return res.json({
+            "message": "Error",
+            "issue": {
+              "error": error,
+            }
+          })
     })
 })
 
@@ -73,11 +90,21 @@ router.get('/advice', (req, res) => {
     .then(function (response) {
         let info = response["data"]
         let slip = info["slip"]
-        return res.send(slip["advice"])
+        return res.json({
+            "message": "Success",
+            "advice": {
+              "message": slip["advice"]
+            }
+          })
     })
     .catch(function (error) {
         console.log(error)
-        return res.send(`ERROR: ${error}`)
+        return res.json({
+            "message": "Error",
+            "issue": {
+              "error": error,
+            }
+          })
     })
     
 })
