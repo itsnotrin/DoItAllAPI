@@ -64,4 +64,6 @@ router.get('/emailcheck' , (req, res) => {
   })
 })
 
+
+
 module.exports = router;
