@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const tcpp = require('tcp-ping')
-const pingchecker = require('../../../utils/pingchecker')
 const router = Router();
 
+//Add all the requests
 router.get('/online', (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     tcpp.ping({ address: ip }, function(err, data) {

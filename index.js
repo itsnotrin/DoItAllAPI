@@ -10,21 +10,18 @@ const DevRouter = require('./routes/api/v1/devrouter')
 app.use('/api/v1/fun', FunRouter)
 app.use('/api/v1/dev', DevRouter)
 
-// app.get('/', (req, res) => {
-//     return res.json({
-//         "Success!": "Online!"
-//     })
-// })
 
+//Launch the web server
 try{
     app.listen(port, () => {
         console.log(`Listening on http://localhost:${port}/api`)
     })
-}
+}//Throw err if there is one
 catch(err){
     console.log(`ERROR: ${err.message}`)
 }
 
+//The start func called in test.js
 function start(poort){
     app.listen(poort, () => {
         console.log(`Listening on http://localhost:${poort}/api`)
@@ -32,4 +29,6 @@ function start(poort){
     })
     
 }
+
+//Export the start func
 module.exports = { start }
