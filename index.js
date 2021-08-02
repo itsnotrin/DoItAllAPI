@@ -3,12 +3,14 @@ const { port } = require('./config/config.json')
 const app = express()
 
 //Import the routers
+const MainRouter = require('./routes/frontend/mainrouter')
 const FunRouter = require('./routes/api/v1/funrouter')
 const DevRouter = require('./routes/api/v1/devrouter')
 const InfoRouter = require('./routes/api/v1/inforouter')
 const UtilRouter = require('./routes/api/v1/utilrouter')
 
 //Use the routers
+app.use('/', MainRouter)
 app.use('/api/v1/fun', FunRouter)
 app.use('/api/v1/dev', DevRouter)
 app.use('/api/v1/info', InfoRouter)
