@@ -39,19 +39,42 @@ router.get('/emailcheck' , (req, res) => {
 router.get('/shortenurl', (req, res) => {
   //Shorten the url
   let url = req.query.url
-  async function urlshortner(url) {
-    const response = await bitly.shorten(url);
-    // console.log(`Your shortened bitlink is ${response.link}`);
-    // res.send(response.link)
-    res.json({
-      "message": "Success",
-      "data": {
-        "shortened_url": response.link,
-        "original_url": url
+  if(!req.query.url) {
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error": "You are missing the url in the request!",
       }
-    }) 
+    })
   }
-  urlshortner(url)
+  else{
+    let url = req.query.url
+    async function urlshortner(url) {
+      if(!url.startsWith('http')){
+        return res.json({
+          "message": "Error",
+          "issue": {
+            "error": "The url must start with http or https!",
+          }
+        })
+      }
+      if(url.startsWith('http')){
+        const response = await bitly.shorten(url);
+        res.json({
+          "message": "Success",
+          "data": {
+            "shortened_url": response.link,
+            "original_url": url
+          }
+        }) 
+        }
+      
+
+    }
+    urlshortner(url)
+  }
+  
+
 })
 
 
