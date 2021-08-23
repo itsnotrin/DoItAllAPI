@@ -1,0 +1,14 @@
+body{
+    background-color: #121212
+}
+
+.title{
+    text-align: center;
+    color: white;
+    font-size: 35px;
+}
+
+.subheading{
+    text-align:center;
+    color: #3700B3
+}

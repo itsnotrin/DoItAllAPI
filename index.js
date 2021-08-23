@@ -16,6 +16,8 @@ app.use('/api/v1/dev', DevRouter)
 app.use('/api/v1/info', InfoRouter)
 app.use('/api/v1/util', UtilRouter)
 
+//Server Settings
+app.use(express.static('./routes/frontend/Static'))
 
 //Launch the web server
 try{

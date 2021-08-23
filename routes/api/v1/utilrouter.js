@@ -20,7 +20,6 @@ router.get('/emailcheck' , (req, res) => {
         "disposable": info["disposable"],
         "webmail": info["webmail"],
         "deliverable": info["deliverable"],
-        "gibberish": info["gibberish"],
         "spam": info["spam"]
       }
     }) 
