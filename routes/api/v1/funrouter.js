@@ -173,6 +173,24 @@ router.get('/randomsubreddit', async (req, res) => {
 })
 
 
+router.get('/doggo', async (req, res) => {
+  return res.json({
+    "message": "Success",
+    "response" : {
+      "imageLink": await GetRedditImage('dogpictures')
+    }
+  })
+})
+
+router.get('/catto', async (req, res) => {
+  return res.json({
+    "message": "Success",
+    "response": {
+      "imageLink": await GetRedditImage('cat')
+    }
+  })
+})
+
 
 
 module.exports = router;
