@@ -191,6 +191,31 @@ router.get('/catto', async (req, res) => {
   })
 })
 
+router.get('/cute', async (req, res) => {
+  return res.json({
+    "message": "Success",
+    "response": {
+      "imageLink": await GetRedditImage('aww')
+    }
+  })
+})
 
+router.get('/art', async (req, res) => {
+  return res.json({
+    "message": "Success",
+    "response": {
+      "imageLink": await GetRedditImage('Art')
+    }
+  })
+})
+
+router.get('/facepalm', async (req, res) => {
+  return res.json({
+    "message": "Success",
+    "response": {
+      "imageLink": await GetRedditImage('facepalm')
+    }
+  })
+})
 
 module.exports = router;
