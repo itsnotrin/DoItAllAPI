@@ -2,6 +2,7 @@ const { Router } = require('express')
 const BitlyClient = require('bitly').BitlyClient;
 const bitly = new BitlyClient('c415fd2508c4ce3dbe44af1b770dd10a833dfb41');
 const router = Router();
+const axios = require('axios')
 
 //Add all the endpoints
 router.get('/emailcheck' , (req, res) => {
@@ -74,6 +75,42 @@ router.get('/shortenurl', (req, res) => {
   }
   
 
+})
+
+router.get('/weather', (req, res) => {
+  let cityName = req.query.city;
+  let apiKey = "ccf94215c8d4f32f35fb58192429d01f";
+
+  if (!cityName) {
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error:": "You didn't provide a city!"
+      }
+    })
+  }
+  else{
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+    axios.get(url)
+    .then(function (response) {
+      let info = response["data"]["weather"][0]["main"]
+      return res.json({
+        "message": "Success",
+        "response": {
+          "weather": info
+        }
+      })
+    })
+    .catch(function (error) {
+      console.log(error)
+      return res.json({
+        "message": "Error",
+        "issue": {
+          "error": error,
+        }
+      })
+    })
+  }
 })
 
 

@@ -65,6 +65,13 @@ async function GetRedditImage(subreddit){
   
 }
 
+//Func to generate a random inclusive number (really not needed but meh)
+function getRandomNumInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; // max & min both included 
+}
+
 
 //Add all the endpoints
 router.get('/', (req, res) => {
@@ -158,7 +165,7 @@ router.get('/randomsubreddit', async (req, res) => {
     return res.json({
       "message": "Error",
       "issue": {
-        "error:": "You did't provide a subreddit!"
+        "error:": "You didn't provide a subreddit!"
       }
     })
   }
@@ -216,6 +223,28 @@ router.get('/facepalm', async (req, res) => {
       "imageLink": await GetRedditImage('facepalm')
     }
   })
+})
+
+router.get('/lovemeter', (req, res) => {
+  let person1 = req.query.person1;
+  let person2 = req.query.person2;
+  if(!person1 || !person2) {
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error": "You are missing one of the people's names in the request!",
+      }
+    })
+  }
+  else{
+    getRandomNumInclusive(0,100)
+    return res.json({
+      "message": "Success",
+      "response": {
+        "lovemeter": `${person1} and ${person2} have a ${getRandomNumInclusive(0, 100)}% love rate!`
+      }
+    })
+  } 
 })
 
 module.exports = router;
