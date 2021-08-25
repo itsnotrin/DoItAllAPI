@@ -4,6 +4,7 @@ const axios = require('axios');
 const router = Router();
 const path = require('path');
 const Jimp = require('jimp');
+const { getImage } = require('random-reddit')
 
 //Functions:
 
@@ -43,6 +44,25 @@ function randstr(length) {
  //Debugging:
  console.log(result)
  return result;
+}
+
+//Func to fetch an image from reddit
+async function GetRedditImage(subreddit){
+  try{
+    const image = await getImage(subreddit)
+    //Debugging: console.log(image) - Logs the url of the image chosen to the console.
+    return image
+  }
+  catch{
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error": "Error in the function to get the reddit image.",
+      }
+    })
+  }
+
+  
 }
 
 
@@ -122,6 +142,37 @@ router.get('/advice', (req, res) => {
 //     })
 //   })
 // })
+
+router.get('/randommeme', async (req, res) =>{
+  return res.json({
+    "message": "Success",
+    "response": {
+      "imageLink": await GetRedditImage('memes') // Gets the reddit image then sends it
+    }
+  })
+})
+
+router.get('/randomsubreddit', async (req, res) => {
+  let subreddit = req.query.subreddit
+  if(!subreddit){
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error:": "You did't provide a subreddit!"
+      }
+    })
+  }
+  else{
+    return res.json({
+      "message": "Success",
+      "response": {
+        "imageLink": await GetRedditImage(subreddit)
+      }
+    })
+  }
+})
+
+
 
 
 module.exports = router;
