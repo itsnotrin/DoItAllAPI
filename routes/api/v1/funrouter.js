@@ -2,7 +2,10 @@ const { Router } = require('express')
 const fs = require("fs");
 const axios = require('axios');
 const router = Router();
+const path = require('path');
+const Jimp = require('jimp');
 
+//Functions:
 
 //Func to get a random line from a text file
 function getRandomLine(filename, res){
@@ -27,6 +30,19 @@ function getRandomLine(filename, res){
       // FOR DEBUGGING: return console.log(line);
       
    })
+}
+
+//Func to make a random string (you can do this way easier but I like making life hard)
+function randstr(length) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+ }
+ //Debugging:
+ console.log(result)
+ return result;
 }
 
 
@@ -81,6 +97,31 @@ router.get('/advice', (req, res) => {
     
 })
 
+// router.get('/changemymind', (req, res) => {
+//   let text = req.query.text
+//   let img_name = randstr(6)
+//   Jimp.read('./img/changemymind.png')
+//   .then(function (image) {
+//     loadedImage = image;
+//     return Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
+//   })
+//   .then(function(font){
+//     let ImagePath = path.resolve('./routes/frontend/Static/img/' + img_name + '.png')
+//     loadedImage.print(font, 275, 650, "hey lol")
+//     .write(ImagePath)
+//     res.sendFile(ImagePath)
+    
+//   })
+//   .catch(err => {
+//     console.log("ERROR! " + err)
+//     return res.json({
+//       "message": "Error",
+//       "issue": {
+//         "error": `There has been an error! ${err}`
+//       }
+//     })
+//   })
+// })
 
 
 module.exports = router;
