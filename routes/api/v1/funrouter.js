@@ -4,7 +4,8 @@ const axios = require('axios');
 const router = Router();
 const path = require('path');
 const Jimp = require('jimp');
-const { getImage } = require('random-reddit')
+const { getImage } = require('random-reddit');
+const { rejects } = require('assert');
 
 //Functions:
 
@@ -237,7 +238,6 @@ router.get('/lovemeter', (req, res) => {
     })
   }
   else{
-    getRandomNumInclusive(0,100)
     return res.json({
       "message": "Success",
       "response": {
@@ -245,6 +245,27 @@ router.get('/lovemeter', (req, res) => {
       }
     })
   } 
+})
+
+router.get('/randomnumber', (req, res) => {
+  let min = req.query.min;
+  let max = req.query.max;
+  if (!min || !max) {
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error": "You are missing either the min or the max in the request!"
+      }
+    })
+  }
+  else{
+    return res.json({
+      "message": "Success",
+      "response": {
+        "randomnum": getRandomNumInclusive(min, max)
+      }
+    })
+  }
 })
 
 module.exports = router;
