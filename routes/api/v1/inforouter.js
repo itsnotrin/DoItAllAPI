@@ -1,4 +1,4 @@
-const { default: axios } = require('axios');
+const { axios } = require('axios');
 const { Router } = require('express')
 const router = Router();
 
