@@ -5,7 +5,6 @@ const router = Router();
 const path = require('path');
 const Jimp = require('jimp');
 const { getImage } = require('random-reddit');
-const { rejects } = require('assert');
 
 //Functions:
 
