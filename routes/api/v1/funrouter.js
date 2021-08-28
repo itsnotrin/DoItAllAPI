@@ -83,6 +83,10 @@ router.get('/randomjoke', (req, res) => {
     getRandomLine('messages/jokes.txt', res);
 })
 
+router.get('/randomfact', (req, res) => {
+    getRandomLine('messages/facts.txt', res)
+})
+
 router.get('/randompickupline', (req, res) => {
     getRandomLine('messages/pickuplines.txt', res);
 })
