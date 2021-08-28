@@ -42,8 +42,7 @@ function randstr(length) {
   for ( var i = 0; i < length; i++ ) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
  }
- //Debugging:
- console.log(result)
+ //Debugging: console.log(result)
  return result;
 }
 
@@ -125,31 +124,52 @@ router.get('/advice', (req, res) => {
     
 })
 
-// router.get('/changemymind', (req, res) => {
-//   let text = req.query.text
-//   let img_name = randstr(6)
-//   Jimp.read('./img/changemymind.png')
-//   .then(function (image) {
-//     loadedImage = image;
-//     return Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
-//   })
-//   .then(function(font){
-//     let ImagePath = path.resolve('./routes/frontend/Static/img/' + img_name + '.png')
-//     loadedImage.print(font, 275, 650, "hey lol")
-//     .write(ImagePath)
-//     res.sendFile(ImagePath)
+router.get('/changemymind', (req, res) => {
+  let text = req.query.text
+  let img_name = randstr(6)
+  Jimp.read('./img/changemymind.png')
+  .then(function (image) {
+    loadedImage = image;
+    return Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
+  })
+  .then(function(font){
+    let ImagePath = path.resolve('./routes/frontend/Static/img/' + img_name + '.png')
+    loadedImage.print(font, 275, 650, text)
+    .write(ImagePath)
+    res.redirect(`http://127.0.0.1:8000/img/${img_name}.png`)
     
-//   })
-//   .catch(err => {
-//     console.log("ERROR! " + err)
-//     return res.json({
-//       "message": "Error",
-//       "issue": {
-//         "error": `There has been an error! ${err}`
-//       }
-//     })
-//   })
-// })
+  })
+  .catch(err => {
+    console.log("ERROR! " + err)
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error": `There has been an error! ${err}`
+      }
+    })
+  })
+})
+
+router.get('/randomstring', (req, res) => {
+  let length = req.query.length;
+  if (!length){
+    return res.json({
+      "message": "Success",
+      "response": {
+        "string": randstr(5)
+      }
+    })
+  }
+  else{
+    return res.json({
+      "message": "Success",
+      "response": {
+        "string": randstr(length)
+      }
+    })
+  }
+
+})
 
 router.get('/randommeme', async (req, res) =>{
   return res.json({
