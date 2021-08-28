@@ -137,7 +137,6 @@ router.get('/changemymind', (req, res) => {
     loadedImage.print(font, 275, 650, text)
     .write(ImagePath)
     res.redirect(`http://127.0.0.1:8000/img/${img_name}.png`)
-    
   })
   .catch(err => {
     console.log("ERROR! " + err)
@@ -157,6 +156,14 @@ router.get('/randomstring', (req, res) => {
       "message": "Success",
       "response": {
         "string": randstr(5)
+      }
+    })
+  }
+  else if (length > 10000) {
+    return res.json({
+      "message": "Error",
+      "issue": {
+        "error": `That's too long!`
       }
     })
   }
