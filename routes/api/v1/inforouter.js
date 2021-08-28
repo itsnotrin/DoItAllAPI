@@ -10,7 +10,6 @@ router.get('/iss-location', (req, res) => {
     axios.get(url)
     .then(function (response) {
         let info = response["data"]
-        let data = info["data"]
         let yes = info["iss_position"]
         return res.json({
             "message": "Success",
