@@ -31,6 +31,10 @@ router.get('/iss-location', (req, res) => {
     })
 });
 
+router.get('/', (req, res) => {
+  
+})
+
 
 
 
