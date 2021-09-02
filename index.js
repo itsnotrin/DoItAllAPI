@@ -22,7 +22,7 @@ app.use(express.static('./routes/frontend/Static'))
 //Launch the web server
 try{
     app.listen(port, () => {
-        console.log(`Listening on http://localhost:${port}/api`)
+        console.log(`Listening on http://localhost:${port}`)
     })
 }//Throw err if there is one
 catch(err){
@@ -32,7 +32,7 @@ catch(err){
 //The start func called in test.js
 function start(poort){
     app.listen(poort, () => {
-        console.log(`Listening on http://localhost:${poort}/api`)
+        console.log(`Listening on http://localhost:${poort}`)
     })
     
 }

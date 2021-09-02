@@ -1,10 +1,13 @@
 body{
-    background-color: #121212
+    background-color: #2d2d2d
 }
 
 .title{
     text-align: center;
-    color: white;
+    background: rgb(34,193,195);
+    background: linear-gradient(-35deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 35px;
 }
 
