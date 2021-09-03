@@ -128,7 +128,7 @@ router.get('/advice', (req, res) => {
 })
 
 router.get('/changemymind', (req, res) => {
-  let text = req.query.text
+  let text = req.query.text ?? "You can't change my mind lol"
   let img_name = randstr(6)
   Jimp.read('./img/changemymind.png')
   .then(function (image) {

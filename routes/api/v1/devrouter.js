@@ -1,11 +1,11 @@
 const { Router } = require('express')
-const tcpp = require('tcp-ping')
+const tcp = require('tcp-ping')
 const router = Router();
 
 //Add all the endpoints
 router.get('/online', (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    tcpp.ping({ address: ip }, function(err, data) {
+    tcp.ping({ address: ip }, function(err, data) {
       const latency = data["avg"]
       return res.json({
         "message": "Success",
@@ -18,7 +18,7 @@ router.get('/online', (req, res) => {
 
 router.get('/latency', function(req, res) {
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  tcpp.ping({ address: ip }, function(err, data) {
+  tcp.ping({ address: ip }, function(err, data) {
     const latency = data["avg"]
     return res.json({
       "message": "Success",
