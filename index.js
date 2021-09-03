@@ -8,13 +8,15 @@ const FunRouter = require('./routes/api/v1/funrouter')
 const DevRouter = require('./routes/api/v1/devrouter')
 const InfoRouter = require('./routes/api/v1/inforouter')
 const UtilRouter = require('./routes/api/v1/utilrouter')
+const ApiRouter = require('./routes/api/v1/ai')
 
-//Use the routers
+//Initialize the routers
 app.use('/', MainRouter)
 app.use('/api/v1/fun', FunRouter)
 app.use('/api/v1/dev', DevRouter)
 app.use('/api/v1/info', InfoRouter)
 app.use('/api/v1/util', UtilRouter)
+app.use('/api/v1/api', ApiRouter)
 
 //Server Settings
 app.use(express.static('./routes/frontend/Static'))
