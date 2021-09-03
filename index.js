@@ -10,6 +10,30 @@ const InfoRouter = require('./routes/api/v1/inforouter')
 const UtilRouter = require('./routes/api/v1/utilrouter')
 const ApiRouter = require('./routes/api/v1/ai')
 
+//Custom Middleware
+ var usageLogger = (upperCase)=>{
+  
+    if( typeof uppercase !== 'boolean' ){
+      upperCase = true; //Just to make sure that the setting is correct
+    }
+    
+    return (req,res,next) =>{
+        if (req.url == "/"){
+            //Pass it on
+            next()
+        }
+        else{
+        //Extensive Logging:  console.log('Logging:', (upperCase ? req.url.toUpperCase() : req.url.toLowerCase()));
+        console.log('Someone used the API!') // Need to think of some good way to store this so I can store api usage
+        next();
+        }
+    }
+}
+
+//Server Settings
+app.use(express.static('./routes/frontend/Static'))
+app.use(usageLogger(false));
+
 //Initialize the routers
 app.use('/', MainRouter)
 app.use('/api/v1/fun', FunRouter)
@@ -17,9 +41,6 @@ app.use('/api/v1/dev', DevRouter)
 app.use('/api/v1/info', InfoRouter)
 app.use('/api/v1/util', UtilRouter)
 app.use('/api/v1/api', ApiRouter)
-
-//Server Settings
-app.use(express.static('./routes/frontend/Static'))
 
 //Launch the web server
 try{
