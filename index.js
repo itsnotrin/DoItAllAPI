@@ -10,21 +10,21 @@ const InfoRouter = require('./routes/api/v1/inforouter')
 const UtilRouter = require('./routes/api/v1/utilrouter')
 const ApiRouter = require('./routes/api/v1/ai')
 
-//Custom Middleware
- var usageLogger = (upperCase)=>{
+//Custom Middleware (Has to go before the routes to actually log anything being used)
+const usageLogger = (upperCase)=>{
   
     if( typeof uppercase !== 'boolean' ){
       upperCase = true; //Just to make sure that the setting is correct
     }
     
     return (req,res,next) =>{
-        if (req.url == "/"){
+        if (req.url == "/"){ //Ignore the main page being accessed as it's not an API route and therefore should not be counted.
             //Pass it on
             next()
         }
         else{
         //Extensive Logging:  console.log('Logging:', (upperCase ? req.url.toUpperCase() : req.url.toLowerCase()));
-        console.log('Someone used the API!') // Need to think of some good way to store this so I can store api usage
+        // console.log('Someone used the API!') // Need to think of some good way to store this so I can store api usage
         next();
         }
     }

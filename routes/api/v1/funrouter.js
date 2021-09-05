@@ -36,7 +36,7 @@ function getRandomLine(filename, res){
 //Func to make a random string (you can do this way easier but I like making life hard)
 function randstr(length) {
   var result           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-=+';
   var charactersLength = characters.length;
   for ( var i = 0; i < length; i++ ) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -60,8 +60,6 @@ async function GetRedditImage(subreddit){
       }
     })
   }
-
-  
 }
 
 //Func to generate a random inclusive number (really not needed but meh)
