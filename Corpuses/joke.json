@@ -1,0 +1,19 @@
+{
+    "name": "joke",
+    "locale": "en-US",
+    "data": [
+      {
+        "intent": "agent.joke",
+        "utterances": [
+          "joke",
+          "tell me a joke",
+          "whats a good joke",
+          "give me a joke"
+        ],
+        "answers": [
+          "return a joke"
+        ]
+      }
+    ]
+  }
+  

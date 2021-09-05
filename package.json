@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nlpjs/basic": "^4.22.0",
     "axios": "^0.21.1",
     "bitly": "^7.1.2",
     "express": "^4.17.1",
     "jimp": "^0.16.1",
-    "natural": "^5.1.0",
     "nodemon": "^2.0.12",
     "random-reddit": "^2.0.1",
     "tcp-ping": "^0.1.1"

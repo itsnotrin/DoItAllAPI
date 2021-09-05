@@ -41,7 +41,6 @@ function randstr(length) {
   for ( var i = 0; i < length; i++ ) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
  }
- //Debugging: console.log(result)
  return result;
 }
 
@@ -130,7 +129,7 @@ router.get('/changemymind', (req, res) => {
   let img_name = randstr(6)
   Jimp.read('./img/changemymind.png')
   .then(function (image) {
-    loadedImage = image;
+    let loadedImage = image;
     return Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   })
   .then(function(font){
