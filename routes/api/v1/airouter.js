@@ -47,6 +47,7 @@ router.get('/ask', async (req, res) => {
       const nlp = dock.get('nlp');
       nlp.addLanguage('en');
       await nlp.addCorpus('./Corpuses/joke.json');
+      await nlp.addCorpus('./Corpuses/insult.json')
       await nlp.train();
       const response = await nlp.process('en', message);
       var end = new Date().getTime();
@@ -54,6 +55,9 @@ router.get('/ask', async (req, res) => {
       console.log(`Took ${time}ms to run`);
       if(response["answer"] == "return a joke"){
         getRandomLine('messages/jokes.txt', res)
+      }
+      else if(response["answer"] == "return an insult"){
+          getRandomLine('messages/insults.txt', res)
       }
       else{
         return res.json({

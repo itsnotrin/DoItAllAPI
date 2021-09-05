@@ -1,0 +1,20 @@
+{
+    "name": "insult",
+    "locale": "en-US",
+    "data": [
+      {
+        "intent": "agent.insult",
+        "utterances": [
+          "insult",
+          "tell me a insult",
+          "whats a good insult",
+          "give me a insult",
+          "insult me"
+        ],
+        "answers": [
+          "return an insult"
+        ]
+      }
+    ]
+  }
+  
