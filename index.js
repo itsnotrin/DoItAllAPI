@@ -8,7 +8,7 @@ const FunRouter = require('./routes/api/v1/funrouter')
 const DevRouter = require('./routes/api/v1/devrouter')
 const InfoRouter = require('./routes/api/v1/inforouter')
 const UtilRouter = require('./routes/api/v1/utilrouter')
-const ApiRouter = require('./routes/api/v1/ai')
+const AiRouter = require('./routes/api/v1/airouter')
 
 //Custom Middleware (Has to go before the routes to actually log anything being used)
 const usageLogger = (upperCase)=>{
@@ -40,7 +40,8 @@ app.use('/api/v1/fun', FunRouter)
 app.use('/api/v1/dev', DevRouter)
 app.use('/api/v1/info', InfoRouter)
 app.use('/api/v1/util', UtilRouter)
-app.use('/api/v1/api', ApiRouter)
+app.use('/api/v1/ai', AiRouter)
+
 
 //Launch the web server
 try{
