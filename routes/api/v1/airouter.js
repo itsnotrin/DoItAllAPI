@@ -48,6 +48,8 @@ router.get('/ask', async (req, res) => {
       nlp.addLanguage('en');
       await nlp.addCorpus('./Corpuses/joke.json');
       await nlp.addCorpus('./Corpuses/insult.json')
+      await nlp.addCorpus('./Corpuses/fact.json')
+      await nlp.addCorpus('./Corpuses/pickupline.json')
       await nlp.train();
       const response = await nlp.process('en', message);
       var end = new Date().getTime();
@@ -57,13 +59,19 @@ router.get('/ask', async (req, res) => {
         getRandomLine('messages/jokes.txt', res)
       }
       else if(response["answer"] == "return an insult"){
-          getRandomLine('messages/insults.txt', res)
+        getRandomLine('messages/insults.txt', res)
+      }
+      else if(response["answer"] == "return a fact"){
+        getRandomLine('messages/facts.txt', res)
+      }
+      else if(response["answer"] == "return a pickup line"){
+        getRandomLine('messages/pickuplines.txt', res)
       }
       else{
         return res.json({
             "message": "Success",
             "response": {
-              "answer": response["answer"]
+              "answer": "Answer unclear. Try wording your message differently!"
             }
           })
       }
