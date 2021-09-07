@@ -50,6 +50,7 @@ router.get('/ask', async (req, res) => {
       await nlp.addCorpus('./Corpuses/insult.json')
       await nlp.addCorpus('./Corpuses/fact.json')
       await nlp.addCorpus('./Corpuses/pickupline.json')
+      await nlp.addCorpus('./Corpuses/greeting.json')
       await nlp.train();
       const response = await nlp.process('en', message);
       var end = new Date().getTime();
@@ -66,6 +67,9 @@ router.get('/ask', async (req, res) => {
       }
       else if(response["answer"] == "return a pickup line"){
         getRandomLine('messages/pickuplines.txt', res)
+      }
+      else if(response["answer"] == "return a greeting"){
+        getRandomLine('messages/greetings.txt', res)
       }
       else{
         return res.json({
