@@ -16,7 +16,7 @@ router.get('/online', (req, res) => {
     })
 });
 
-router.get('/latency', function(req, res) {
+router.get('/latency', (req, res) => {
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   tcp.ping({ address: ip }, function(err, data) {
     const latency = data["avg"]
@@ -28,6 +28,16 @@ router.get('/latency', function(req, res) {
     })
   })
 });
+
+router.get('/calls', (req, res) => { 
+  //When logging is set up, make it call here then show the stats
+  return res.json({
+    "message": "Error",
+    "error": {
+      "message": "This endpoint is still in development!"
+    }
+  })
+})
 
 
 module.exports = router;

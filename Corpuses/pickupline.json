@@ -1,0 +1,21 @@
+{
+    "name": "pickupline",
+    "locale": "en-US",
+    "data": [
+      {
+        "intent": "agent.pickupline",
+        "utterances": [
+          "bro i need it",
+          "give me a good pickup line",
+          "funny pickup line",
+          "pickup",
+          "give me a pick up line",
+          "pick up line"
+        ],
+        "answers": [
+          "return a pickup line"
+        ]
+      }
+    ]
+  }
+  

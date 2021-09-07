@@ -1,0 +1,21 @@
+{
+    "name": "fact",
+    "locale": "en-US",
+    "data": [
+      {
+        "intent": "agent.fact",
+        "utterances": [
+          "fact",
+          "tell me a fact",
+          "whats a good fact",
+          "give me a fact",
+          "tell me something",
+          "tell me some info"
+        ],
+        "answers": [
+          "return a fact"
+        ]
+      }
+    ]
+  }
+  

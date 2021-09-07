@@ -129,7 +129,7 @@ router.get('/changemymind', (req, res) => {
   let img_name = randstr(6)
   Jimp.read('./img/changemymind.png')
   .then(function (image) {
-    let loadedImage = image;
+    loadedImage = image;
     return Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
   })
   .then(function(font){
